@@ -7,7 +7,7 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(#003a39, #2ebb79);
+    background: linear-gradient(black, white);
     overflow-x: hidden;
 }
 
