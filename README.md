@@ -1,3 +1,3 @@
 # KayoSavio.github.io
 My personal website
-https://kayosavio.github.io/
+https://kayosavio.github.io/index.html
