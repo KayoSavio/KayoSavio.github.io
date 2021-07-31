@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://kayosavio.github.io/global.css">
+    <link rel="stylesheet" type="text/css" href="global.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,26 +9,76 @@
 </head>
 <body>
     <div id="portifolio">
+        <div v-show="status!=true" class="new">
+            <div class="wave">
+                <span style="--i:1">L</span>
+                <span style="--i:2">o</span>
+                <span style="--i:3">a</span>
+                <span style="--i:4">d</span>
+                <span style="--i:5">i</span>
+                <span style="--i:6">n</span>
+                <span style="--i:7">g</span>
+                <span style="--i:8">.</span>
+                <span style="--i:9">.</span>
+                <span style="--i:10">.</span>
+            </div>
+        </div>
+        <section class="banner" id="sect">
         <header>
-            <a href="#" class="logo">Logo</a>
-            <ul>
-                <li><a href="https://kayosavio.github.io/" class="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Work</a></li>
-                <li><a href="https://kayosavio.github.io/projects/florest/florest.html">Project</a></li>
-            </ul>
+            <a href="#" class="logo">Kayo</a>
+            <div id="toggle" onclick="toggle()"></div>
         </header>
-        <section>
-            <h2 id="text">Florest</h2>         
-            <a href="#" id="btn">Explore</a>
+        <div class="content">
+            <h2>Hello World,<br>I'm <span>Kayo Sávio</span></h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat ducimus accusamus
+                 ad tempore aut consectetur cumque impedit provident soluta amet sint in earum porro,
+                  doloribus deleniti quos excepturi perspiciatis. Iusto.</p>         
+            <a href="#">Know More</a>
+            <div class="share"><svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -1 45 40">
+                <path d="M17,24.49,32,12.26,17,0V7.62S11.56,9,8.57,11.34C6.64,12.87,0,16.34,0,32c0,0,4-15.1,17-15.1Z"/></svg>
+            </div>
+        </div>
         </section>
+        <div id="navigation">
+            <ul>
+                <li data-text="Home"><a href="#">Home</a></li>
+                <li data-text="About"><a href="#">About</a></li>
+                <li data-text="Projects"><a href="#">Projects</a></li>
+                <li data-text="Portfolio"><a href="#">Portfolio</a></li>
+                <li data-text="Contact"><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <footer>
+            <ul class="social">
+                <li><a href="#"><img src="./assets/icons/whats.svg"></a></li>
+                <li><a href="#"><img src="./assets/icons/insta.svg"></a></li>
+                <li><a href="#"><img src="./assets/icons/linkedin.svg"></a></li>
+            </ul>
+        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
     <script>
+        function toggle(){
+            var sect = document.getElementById('sect');
+            var navi = document.getElementById('navigation');
+            sect.classList.toggle('active');
+            navi.classList.toggle('active');
+        }
         let app = new Vue({
             el: "#portifolio",
             data:{
+                sect: document.getElementById('sect'),
+                status: '',
             },
+            methods:{
+                toggle: function (){
+                    this.sect.classList.toggle('active');
+                }
+            },
+            created(){
+                this.status= false;
+                setTimeout(()=>{ this.status = true}, 4000);
+            }
         })
     </script>
 </body>
