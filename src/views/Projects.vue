@@ -1,3 +1,54 @@
+<template>
+    <div id="portifolio">
+        <section :class="banner" id="sect"> 
+        <header>
+            <a href="#" class="logo">Kayo</a>
+            <div id="toggle" @click="muda"></div>
+        </header>
+        <div class="content">
+            
+            <div class="share"><svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="-5 -1 45 40">
+                <path d="M17,24.49,32,12.26,17,0V7.62S11.56,9,8.57,11.34C6.64,12.87,0,16.34,0,32c0,0,4-15.1,17-15.1Z"/></svg>
+            </div>
+        </div>
+        </section>
+        <Navigation :class="active"/>
+        <Footer/>
+    </div>
+</template>
+
+<script>
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
+
+export default{
+    data() {
+    return {
+        banner: 'banner',
+        active: '',
+    };
+},
+    methods:{
+        muda(){
+            if(this.banner != 'banner active'){
+                this.banner = 'banner active';
+                this.active = 'active';
+                }
+            else{
+                this.banner = 'banner';
+                this.active = '';          
+                } 
+        }
+},
+    name: 'Home',
+    components: {
+    Footer,
+    Navigation,
+  },
+}
+</script>
+
+<style scoped>
 * 
 {
     margin: 0;
@@ -72,7 +123,7 @@ header #toggle::after
     width: 100%;
     min-height: 100vh;
     padding: 100px;
-    background: url('/assets/desing.jpg');
+    background: url('../assets/desing.jpg');
     background-size: cover;
     display: flex;
     align-items: center;
@@ -138,7 +189,7 @@ header #toggle::after
     width: 100%;
     min-height: 100vh;
     padding: 100px;
-    background: url('/assets/desing.jpg');
+    background: url('../assets/desing.jpg');
     background-size: cover;
     display: flex;
     align-items: center;
@@ -149,113 +200,6 @@ header #toggle::after
 .banner.active
 {
     transform: translateX(-400px);
-}
-
-#navigation
-{
-    position: fixed;
-    top: 0;
-    right: -400px;
-    width: 400px;
-    height: 100vh;
-    background: red;
-    z-index: 1;
-    display: grid;
-    place-items: center;
-    transition: 0.5s;
-}
-
-#navigation.active
-{
-    right: 0;
-}
-
-#navigation ul
-{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-#navigation ul li
-{
-    list-style: none;
-}
-
-#navigation ul li:before
-{
-    content: attr(data-text);
-    position: absolute;
-    top: 50%;
-    right: 450px;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 8em;
-    font-weight: 700;
-    pointer-events: none;
-    opacity: 0;
-    letter-spacing: 20px;
-    transition: 0.5s;
-    white-space: nowrap;
-}
-
-#navigation ul li:hover:before
-{
-    opacity: 0.5;
-    letter-spacing: 0px;
-}
-
-#navigation ul li a
-{
-    position: relative;
-    display: inline-block;
-    padding: 6px 15px;
-    text-decoration: none;
-    background: red;
-    color: white;
-    font-size: 2em;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    overflow: hidden;
-    transition: 0.5s;
-    z-index: 1;
-}
-
-#navigation ul:hover li a
-{
-    opacity: 0.4;
-    background-blend-mode: darken;
-    color: #169c81;
-}
-
-#navigation ul li a:hover
-{
-    transform: scale(1.4);
-    z-index: 1000;
-    background: #169c81;
-    color: white;
-    opacity: 1;
-}
-
-#navigation ul li a:before
-{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100px;
-    width: 80px;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8),transparent);
-    transform: skew(35deg);
-    transition: 0s;
-}
-
-#navigation ul li a:hover:before
-{
-    left: calc(100% + 100px);
-    transition: 0.5s;
-    transition-delay: 0.2s;
 }
 
 .content
@@ -419,15 +363,7 @@ header .logo
     {
         transform: translateX(-250px);
     }
-    #navigation
-    {
-        width: 250px;
-    }
-    #navigation ul li a
-    {
-        font-size: 1.5em;
-        margin: 5px 0;
-    }
+    
     .social
     {
         position: absolute;
@@ -442,3 +378,4 @@ header .logo
         margin-right: 10px;
     }
 }
+</style>
